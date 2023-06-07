@@ -1,7 +1,7 @@
 // Hamster
 class Hamster {
     constructor(owner, name, price){
-        this.owner = ""
+        this.owner = owner
         this.name = name
         this.price = 15
     }
@@ -17,8 +17,8 @@ class Hamster {
         return this.price
     }
 }
-// const cage1 = new Hamster("Overlord","Hamtaro",) 
-// console.log(cage1)
+const cage1 = new Hamster() 
+
 
 //Person
 class Person {
@@ -66,22 +66,23 @@ class Person {
         // this.bankAccount += 10 * num;
        while(this.age += num){}
     }
-    buyHamster(hamster){
+    buyHamster(animal){
         //push hamster object onto hamster array
         //increment mood by 10, decrement bankAccount by value of hamster (use getPrice)
-        this.hamsters.push(hamster);
+        this.hamsters.push(animal);
         this.mood += 10;
-        this.bankAccount -= hamster.getPrice();
+        this.bankAccount -= Hamster.getPrice();
     }
 }
 
-const block = new Person("Timmy")
-console.log(block.getName());
-console.log(block.getAge(5));
-console.log(block.eat(5));
-console.log(block.exercise(5));
+const person = new Person("Timmy")
+console.log(person.getName());
+console.log(person.getAge(5));
+console.log(person.eat(5));
+console.log(person.exercise(5));
 
-console.log(block.getAge(9));
+console.log(person.getAge(9));
 
-const ham =  new Hamster("", "Gus")
-console.log(ham.owner("Timmy"))
+const ham =  new Hamster(person.getName(), "Gus")
+console.log(ham)
+console.log(person.buyHamster())
