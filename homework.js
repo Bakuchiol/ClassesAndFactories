@@ -1,20 +1,22 @@
 // Hamster
 class Hamster {
-    constructor(owner, name, price){
-        this.owner = owner
+    constructor(name){  // yes because it's redundant to have it as a parameter
+        this.owner = ''
         this.name = name
         this.price = 15
     }
     wheelRun(){
         console.log("squeak squeak")
     }
-
     eatFood(){
         console.log("nibble nibble")
     }
-
     getPrice(){
         return this.price
+    }
+    // change name of hamster owner
+    newOwner(master){
+        this.owner = master
     }
 }
 const cage1 = new Hamster() 
@@ -33,8 +35,8 @@ class Person {
     getName(){
         return this.name
     }
-    getAge(num){
-        return this.age =+ num;
+    getAge(){
+        return this.age
     }
     getWeight(){
         return this.weight
@@ -45,44 +47,51 @@ class Person {
     eat(num){
         //increment weight, increment mood
         // everytime weight goes up, mood goes up
-        if(this.weight += num){
-            return this.mood += num
-        } else {
-            return this.weight += num
-        }
+        this.weight += num
+        this.mood += num
+        return  `Weight is ${this.weight}, mood is ${this.mood}`
     }    
 
     exercise(num){
         //decrement weight
-        return this.weight -= num;
+        this.weight -= num
+
+        return (`After exercising, ${this.name} is now ${this.weight}kg.`)
     }
     ageUp(num){
         //increment age, increment height, increment weight, decrement mood
         // increment bank account by 10 (birthday money)
-        // this.age += num;
-        // this.height += num;
-        // this.weight += num;
-        // this.mood -= num;
-        // this.bankAccount += 10 * num;
-       while(this.age += num){}
+        
+       this.age += num
+       this.height += num
+       this.weight += num
+       this.mood -= num
+       this.bankAccount += 10 * num
+       
+       return (`At ${this.age} years old, their height is ${this.height},
+       their weight is ${this.weight}, their mood is ${this.mood}, and they accumulated $${this.bankAccount}.`)
     }
-    buyHamster(animal){
+    buyHamster(hamster){
         //push hamster object onto hamster array
         //increment mood by 10, decrement bankAccount by value of hamster (use getPrice)
-        this.hamsters.push(animal);
+        this.hamsters.push(hamster); //goes in hamster array
         this.mood += 10;
-        this.bankAccount -= Hamster.getPrice();
+        this.bankAccount -= hamster.getPrice();
+        // change name of hamster owner
+        hamster.newOwner(getName())
     }
 }
 
 const person = new Person("Timmy")
-console.log(person.getName());
-console.log(person.getAge(5));
+console.log(person.ageUp(5));
 console.log(person.eat(5));
 console.log(person.exercise(5));
 
-console.log(person.getAge(9));
 
-const ham =  new Hamster(person.getName(), "Gus")
-console.log(ham)
-console.log(person.buyHamster())
+console.log(person.ageUp(9));
+const ham =  new Hamster("Gus")
+console.log(person.buyHamster(ham))
+
+console.log(person.ageUp(15));
+console.log(person.eat(2));
+console.log(person.exercise(2));
