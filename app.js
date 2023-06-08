@@ -123,14 +123,14 @@ class Dinner {
 class Chef {
     constructor(name){
         this.name = name;
-        this.dishes = [];
+        this.dishes = []; // array to keep all dishes (metal delivery box)
     }
 
     cook(app, main, treat) {
         const food = new Dinner(app, main, treat);
         this.dishes.push(food);
     }
-
+    // serve all three dishes in one call
     serve(courses) {
         for (let i = 0; i < courses && i < this.dishes.length; i++) {
             console.log(this.dishes[i]);
